@@ -1,0 +1,38 @@
+.navbar{
+    background-color:burlywood;
+}
+a{
+    text-decoration: none;
+}
+.navbar .menu-item .menu-item-text{
+    color: white;
+    text-decoration: none;
+}
+.navbar .menu-item:hover .menu-item-text{
+    color: red;
+}
+.menu-item{
+    cursor: pointer;
+}
+.banner-top img{
+    max-height: 200px;
+}
+.submit-btn
+{
+    margin: auto ;
+    display: block !important;
+}
+.card{
+    cursor: pointer;
+}
+.card-btn{
+    width: 100%;
+}
+.card-title{
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#footer{
+    border-top: 1px solid black;
+}
