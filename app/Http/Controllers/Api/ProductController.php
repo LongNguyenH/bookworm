@@ -17,8 +17,8 @@ class ProductController extends Controller
     public function show(/* Product $Product */Request $request)
     {
             //
-        return $product = $this->productRepository->getProductById($request->route('id'));
-    
+        $product = $this->productRepository->getProductById($request->route('id'));
+        return response()->json(['data' => $product], 200);
     }
     
 

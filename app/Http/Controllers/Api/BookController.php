@@ -26,7 +26,7 @@ class BookController extends Controller
     {
         //
         $books= $this->bookRepository->getAllBooks($request);
-        return $books;
+        return response()->json(['data' => $books], 200);
        /*  return view('index',compact('books')); */
     }
 
@@ -60,8 +60,8 @@ class BookController extends Controller
     public function show(/* Book $book */Request $request)
     {
         //
-        return $book = $this->bookRepository->getBookById($request->route('id'));
-
+        /* $book = $this->bookRepository->getBookById($request->route('id'));
+        return response()->json(['data' => $book], 200); */
     }
 
     /**
@@ -97,26 +97,25 @@ class BookController extends Controller
     {
         //
     }
-    public function filter(Request $request)
-    {
-        return $book = $this->bookRepository->filter($request);
-        
-    }
     public function getOnSale()
     {
-        return $book = $this->bookRepository->getOnSale();
+        $book= $this->bookRepository->getOnSale();
+        return response()->json(['data' => $book], 200);
     }
     public function getRecommended() 
     {
-        return $book = $this->bookRepository->getRecommended();
+        $book= $this->bookRepository->getRecommended();
+        return response()->json(['data' => $book], 200);
     }
     public function getPopular()
     {
-        return $book = $this->bookRepository->getPopular();
+        $book= $this->bookRepository->getPopular();
+        return response()->json(['data' => $book], 200);
     }
     public function getRating()
     {
-        return $book = $this->bookRepository->getRating();
+        $book= $this->bookRepository->getRating();
+        return response()->json(['data' => $book], 200);
     }
         
 }

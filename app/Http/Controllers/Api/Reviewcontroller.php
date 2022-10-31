@@ -89,6 +89,7 @@ class Reviewcontroller extends Controller
         //
     }
     public function reviewById(Request $request){
-        return $this->reviewRepository->getReviewsByBookId($request);
+        $reviews= $this->reviewRepository->getReviewsByBookId($request);
+        return response()->json(['data' => $reviews], 200);
     }
 }

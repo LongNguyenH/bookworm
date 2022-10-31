@@ -18,16 +18,21 @@ class BookRepository implements BookRepositoryInterface
 
     /* get all book */
     public function getAllBooks(Request $request){
+        /* sort variable */
         $sortby = $request->input('sortby');
         $mode = $request->input('mode');
 
-        $today = Carbon::today()->toDateString();
+        /* filter variable */
+        $category_id=$request->input('category_id');
+        $author_id=$request->input('author_id');
+        $rating=$request->input('rating');
 
         $books=$this->book
         ->selectraw('book.*,
             discount_start_date,
             discount_end_date,
             coalesce(discount_price, 0) as discount_price ,
+            round(avg(coalesce(review.rating_start,0)),2) as avgrating,
             case
                 when 
                     (discount_start_date <= now() 
@@ -40,11 +45,13 @@ class BookRepository implements BookRepositoryInterface
                 end 
                 as 
                     final_price,
-                    count(review.book_id) AS count_review
+            count(review.book_id) as count_review
+            
             ')
             ->leftJoin('discount','discount.book_id','=','book.id')
             ->leftJoin('review','book.id','=','review.book_id')
             ->groupBy('book.id','discount_start_date','discount_end_date','discount_price')
+        /* sort condition */
         ->when($sortby=='onsale' && $mode=='desc',
         function($query){
             $query->orderBy('discount_price','desc');
@@ -69,9 +76,21 @@ class BookRepository implements BookRepositoryInterface
         function($query){
             $query->orderBy('final_price','asc');
         })
+        /* filter condition */
+        ->when($category_id!=null ,
+        function($query) use($category_id){
+            $query->where('category_id',$category_id);
+        })
+        ->when($author_id!=null ,
+        function($query) use($author_id){
+            $query->where('author_id',$author_id);
+        })
+        ->when($rating!=null ,
+        function($query) use($rating){
+            $query->havingRaw('round(avg(coalesce(review.rating_start,0)),2) >='.$rating);
+        })
         ->get();  
-        
-        
+                
         return $books;
     }
 
@@ -100,26 +119,7 @@ class BookRepository implements BookRepositoryInterface
         return $books;
     }
     
-    /* Get book by condition */
-    public function filter(Request $request){
-
-        $category_id=$request->input('category_id');
-        $author_id=$request->input('author_id');
-        $sort_by=$request->input('sort_by');
-        
-        if (is_null($category_id) or is_null($author_id))
-            $books=$this->book->where('category_id','=',$category_id)
-            ->orWhere('author_id','=',$author_id);
-        else
-        $books=$this->book->where('category_id',$category_id)
-        ->Where('author_id',$author_id);
-        if(is_null($sort_by)==false)
-            $books=$books->orderBy($sort_by,'asc')->get();
-        else 
-            $books=$books->get();
-        return $books;
-        
-    }
+    
 
     /* get book on sale */
     public function getOnSale()
@@ -160,7 +160,7 @@ class BookRepository implements BookRepositoryInterface
     /* get book rating */
     public function getRating()
     {
-        $books = $this->book->select('book.book_title',DB::raw('AVG(review.rating_start) AS avg_rating'))
+        $books = $this->book->select('book.book_title',DB::raw('AVG(review.rating_start) AS avg_rating'))->where('avg_rating','>=',2)
         ->leftJoin('review','book.id','=','book_id')->groupBy('book.id')->get();
         
         return $books;
