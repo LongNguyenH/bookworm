@@ -22,7 +22,7 @@ class AuthorController extends Controller
     {
         //
         $author= $this->authorRepository->getAllAuthor();
-        return response()->json(['data' => $author], 200);
+        return response()->json($author, 200);
     }
 
     /**

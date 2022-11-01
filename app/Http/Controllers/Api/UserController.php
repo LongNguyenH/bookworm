@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         //
         $user = User::all();
-        return response()->json(['data' => $user], 200);
+        return response()->json($user, 200);
     }
 
     /**
@@ -87,7 +87,7 @@ class UserController extends Controller
     }
     public function userById($id){
         $user = User::findOrFail($id);
-        return response()->json(['data' => $user], 200);
+        return response()->json($user, 200);
     }
     
 }

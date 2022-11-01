@@ -18,7 +18,7 @@ class ProductController extends Controller
     {
             //
         $product = $this->productRepository->getProductById($request->route('id'));
-        return response()->json(['data' => $product], 200);
+        return response()->json($product, 200);
     }
     
 

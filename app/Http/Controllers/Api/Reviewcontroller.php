@@ -90,6 +90,6 @@ class Reviewcontroller extends Controller
     }
     public function reviewById(Request $request){
         $reviews= $this->reviewRepository->getReviewsByBookId($request);
-        return response()->json(['data' => $reviews], 200);
+        return response()->json($reviews, 200);
     }
 }
