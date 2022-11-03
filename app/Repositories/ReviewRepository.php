@@ -22,9 +22,15 @@ class ReviewRepository implements ReviewRepositoryInterface
         $star=$request->star;
         $reviews=$this->review
         ->select(
-
         )
-        ->where('book_id','=',$id)->orderBy($orderby,$order)->get();
+        ->where('book_id','=',$id)
+        ->when($request->has('$orderby') &&$request->has('$orderby'),
+        function ($query) use ($request) {
+
+            $query->orderBy($request->orderby,$request->order);
+
+        })
+        ->get();
         return $reviews;    
     }
     /* public function getRatingStarByBookId($id){

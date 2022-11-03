@@ -39,7 +39,7 @@ class BookRepository implements BookRepositoryInterface
                     (discount_start_date <= now() 
                         and discount_price !=0
                         and (discount_end_date >= now() 
-                        or discount_end_date!=null))
+                        or discount_end_date  IS null))
                     then discount_price 
                 else 
                     book_price 
@@ -139,7 +139,10 @@ class BookRepository implements BookRepositoryInterface
         ->leftJoin('review','book.id','=','review.book_id')
         ->groupBy('book.id','discount_start_date','discount_end_date','discount_price','author_name')
         ->where('discount_start_date','<=','now()')
-        ->where('discount_end_date','>','now()')
+        ->where(function ($query) {
+            $query->where('discount_end_date','>','now()')
+                ->orWhereNull('discount_end_date');
+        })
         ->orderByRaw('sub_price DESC ')
         ->LIMIT(env('DISCOUNT_ITEM_GET_LIMIT'))->get();
         return $books ;

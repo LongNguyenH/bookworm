@@ -19,7 +19,7 @@ function Popular() {
                     {books.map((book)=>{
                         if(book.book_cover_photo!==null){
                         return(
-                            <Card key={book.id} style={{ width: '15rem' }}>
+                            <Card key={book.id} >
                                 <Card.Img variant="top" src={require(`../../assets/bookcover/${book.book_cover_photo}.jpg`)} />
                                 <Card.Body>
                                     <Card.Title>{book.book_title}</Card.Title>
