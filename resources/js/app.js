@@ -36,10 +36,11 @@ function App() {
     setLoggedIn(true);
 
 }; */
+
   return (
     <React.Fragment>
     <Navbar/>
-      <div className=" ml-4 mr-4">
+      <div className="mx-5 my-3">
         <Routes>
           <Route path='/shop' element={ 
               <Book/>

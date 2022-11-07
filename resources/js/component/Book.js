@@ -3,10 +3,11 @@ import { useEffect } from "react";
 import axios from 'axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import ListGroup from 'react-bootstrap/ListGroup';
-
-import Category from './CategoryFilter';
-import Author from './AuthorFilter';
-import { Accordion, Button, Card, Dropdown } from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion';
+import Category from './Category';
+import Author from './Author';
+import { Button, Card, Dropdown } from 'react-bootstrap';
+import api from '../api';
 function Book() {
     let navigate=useNavigate();
     const [books,setBooks]=useState([]);
@@ -23,8 +24,8 @@ function Book() {
         handleChange();
     }
   useEffect(()=>{
-    axios
-    .get(`http://bookworm.com/api/books`,{params:{
+    api
+    .get(`api/books`,{params:{
         category_id:category_filter,
         author_id:author_filter,
         sortby:sortby,
@@ -53,21 +54,25 @@ function Book() {
     }
         return (
             <div  className='d-flex justify-content-between'>
-            <div className="col-2" >
-            {/* <Accordion defaultActiveKey="0">
+            <div className="col-2 me-2" >
+            <Accordion defaultActiveKey="0">
                 <Accordion.Item eventKey="0">
-                <Accordion.Header className='p-0'><p className='fw-bold container-fluid p-0 m-0'>Category</p></Accordion.Header>
+                <Accordion.Header className='p-0'>
+                    <p className='fw-bold container-fluid p-0 m-0'>Category</p>
+                </Accordion.Header>
                 <Accordion.Body className='container-fluid p-0'>
                     <Category handleCategory={handleCategory}/>
                 </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="1">
-            <Accordion.Header className='p-0'><p className='fw-bold container-fluid p-0 m-0'>Author</p></Accordion.Header>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                <Accordion.Header className='p-0'>
+                    <p className='fw-bold container-fluid p-0 m-0'>Author</p>
+                </Accordion.Header>
                 <Accordion.Body className='container-fluid p-0'>
                     <Author handleAuthor={handleAuthor}/>
                 </Accordion.Body>
-            </Accordion.Item>
-              </Accordion> */}
+                </Accordion.Item>
+            </Accordion>
               
             </div>
             <div className=" col-10 ">
@@ -75,8 +80,8 @@ function Book() {
                         <div>
                             Showing
                         </div>
-                        <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        <Dropdown  >
+                        <Dropdown.Toggle  id="dropdown-basic" className='.bg-primary' variant='primary'>
                             Sort By
                         </Dropdown.Toggle>
 

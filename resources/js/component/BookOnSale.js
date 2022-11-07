@@ -3,11 +3,12 @@ import { useEffect } from "react";
 import axios from 'axios';
 import { Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import api from '../api';
 function Sale() {
     const [books,setBooks]=useState([]);
   useEffect(()=>{
-    axios
-    .get("http://bookworm.com/api/books/sale")
+    api
+    .get("api/books/sale")
     .then((response)=>response.data)
     .then((response)=>{
         setBooks(response);
@@ -16,7 +17,7 @@ function Sale() {
     
         return (
             <div class="justify-content-center">
-                BOOK ON SALE1
+                ON SALE
                 <div className=" row row-cols-4 justify-content-center row-cols-4 flex-row border p-2 m-2">
                     {books.map((book)=>{
                         if(book.book_cover_photo!==null){

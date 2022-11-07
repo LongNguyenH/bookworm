@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Button, Card, Image, ListGroup, ListGroupItem, Table } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 import Review from './Review';
+import CardHeader from 'react-bootstrap/esm/CardHeader';
 function Cart() {
     const [cart,setCart]=useState([]);
     let [cart_total,setCart_total]=useState(0);
@@ -47,7 +48,7 @@ function Cart() {
                             <tr key={item.id}>
                                 <td>
                                     <div className='d-flex product-column g-3'>
-                                    <Image src={require(`../../assets/bookcover/${item.photo}.jpg`)} className='img-fluid '/>
+                                    <Image src={require(`../../assets/bookcover/${item.photo}.jpg`).default} className='img-fluid '/>
                                     <div className="">
                                         <p className="fw-bold">{item.title}</p>
                                         <p className='font-20px'> {item.author}</p>

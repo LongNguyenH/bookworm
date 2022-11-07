@@ -73,7 +73,7 @@ function Product() {
                             <div className='row'>
                                 <div className='col-4'>
                                 {product.book_cover_photo!==null &&
-                                    <Image src={require(`../../assets/bookcover/${product.book_cover_photo}.jpg`)} className='img-fluid '/>
+                                    <Image src={require(`../../assets/bookcover/${product.book_cover_photo}.jpg`).default} className='img-fluid '/>
                                     }
                                     <div className='d-flex flex-end'>
                                     By <p className='fw-bold'> 

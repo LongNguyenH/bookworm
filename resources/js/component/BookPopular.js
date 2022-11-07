@@ -3,11 +3,12 @@ import { useEffect } from "react";
 import axios from 'axios';
 import { Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import api from '../api';
 function Popular() {
     const [books,setBooks]=useState([]);
   useEffect(()=>{
-    axios
-    .get("http://bookworm.com/api/books/popular")
+    api
+    .get("api/books/popular")
     .then((response)=>response.data)
     .then((response)=>{
         setBooks(response);
