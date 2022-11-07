@@ -18,15 +18,14 @@ import './App.css'; */
 import Navbar from './component/navbar';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import Sale from './component/BookOnSale';
-import Recommend from './component/BookRecommend';
-import Popular from './component/BookPopular';
-import { Tab, Tabs } from 'react-bootstrap';
 import Product from './component/Product';
 import Cart from './component/Cart';
 import Footer from './component/Footer';
 import About from './component/About';
 import Book from './component/Book';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Featured from './component/Featured';
+
 /* import Login from './component/Login'; */
 
 function App() {
@@ -44,12 +43,14 @@ function App() {
         <Routes>
           <Route path='/shop' element={ 
               <Book/>
+
           }/>
           <Route path='/' element={ 
             <div className='row'>
             <React.Fragment>   
               <Sale/>
-              <Tabs
+              <Featured />
+              {/* <Tabs
                 defaultActiveKey="profile"
                 id="uncontrolled-tab-example"
                 className="mb-3"
@@ -60,7 +61,7 @@ function App() {
                 <Tab eventKey="Popular" title="Popular">
                   <Popular/>
                 </Tab>
-              </Tabs>
+              </Tabs> */}
             </React.Fragment>
             </div>
           }/>

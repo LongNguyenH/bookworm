@@ -28,7 +28,7 @@ function Popular() {
                                     
                                     {book.book_cover_photo!==null &&
                                     
-                                    <Card.Img variant="top" src={require(`../../assets/bookcover/${book.book_cover_photo}.jpg`).default} />
+                                    <Card.Img variant="top" src={require(book.book_cover_photo).default} />
                                     }
                                     <Card.Body>
                                         <Card.Title>{book.book_title}</Card.Title>

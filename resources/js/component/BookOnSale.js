@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../api';
+import { objectBookCover } from './BookCover';
 function Sale() {
     const [books,setBooks]=useState([]);
   useEffect(()=>{
@@ -20,7 +21,15 @@ function Sale() {
                 ON SALE
                 <div className=" row row-cols-4 justify-content-center row-cols-4 flex-row border p-2 m-2">
                     {books.map((book)=>{
-                        if(book.book_cover_photo!==null){
+                            Object.keys(book).forEach((key) => {
+                                if (key === 'book_cover_photo') {
+                                  if (book[key] === null || book[key] === 'null') {
+                                    book[key] = objectBookCover['default'];
+                                  } else {
+                                    book[key] =objectBookCover[book[key]];
+                                  }
+                                }
+                              })
                         return(
                             <Link className='card-container row m-0' 
                                 key={book.id} to={'/product'}
@@ -29,7 +38,7 @@ function Sale() {
                                     
                                     {book.book_cover_photo!==null &&
                                     
-                                    <Card.Img variant="top" src={require(`../../assets/bookcover/${book.book_cover_photo}.jpg`).default} />
+                                    <Card.Img variant="top" src={book.book_cover_photo} />
                                     }
                                     <Card.Body>
                                         <Card.Title>{book.book_title}</Card.Title>
@@ -41,7 +50,7 @@ function Sale() {
                                 </Card>         
                                 </Link>                                       
                         );
-                        }
+                        
                     })}
                 </div>
             </div>

@@ -8,6 +8,7 @@ import Category from './Category';
 import Author from './Author';
 import { Button, Card, Dropdown } from 'react-bootstrap';
 import api from '../api';
+import { objectBookCover } from './BookCover';
 function Book() {
     let navigate=useNavigate();
     const [books,setBooks]=useState([]);
@@ -124,7 +125,15 @@ function Book() {
                     </div>
                     <div className='d-flex flex-row row row-cols-4 gap-2 m-0 justify-content-between'>
                         {books.map((book)=>{
-                            
+                            Object.keys(book).forEach((key) => {
+                                if (key === 'book_cover_photo') {
+                                  if (book[key] === null || book[key] === 'null') {
+                                    book[key] = objectBookCover['default'];
+                                  } else {
+                                    book[key] =objectBookCover[book[key]];
+                                  }
+                                }
+                              })
                             return(
                                 <Link className='card-container row m-0' 
                                 key={book.id} to={'/product'}
@@ -133,7 +142,7 @@ function Book() {
                                     
                                     {book.book_cover_photo!==null &&
                                     
-                                    <Card.Img variant="top" src={require(`../../assets/bookcover/${book.book_cover_photo}.jpg`).default} />
+                                    <Card.Img variant="top" src={book.book_cover_photo} />
                                     }
                                     <Card.Body>
                                         <Card.Title>{book.book_title}</Card.Title>
