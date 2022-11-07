@@ -11582,10 +11582,14 @@ function Book() {
     _useState12 = _slicedToArray(_useState11, 2),
     currentPage = _useState12[0],
     setCurrentPage = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState14 = _slicedToArray(_useState13, 2),
-    lastPage = _useState14[0],
-    setLastPage = _useState14[1];
+    perPage = _useState14[0],
+    setPerPage = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState16 = _slicedToArray(_useState15, 2),
+    lastPage = _useState16[0],
+    setLastPage = _useState16[1];
   var handleCategory = function handleCategory(cat) {
     setCategory_filter(cat);
     handleChange();
@@ -11619,7 +11623,8 @@ function Book() {
         author_id: author_filter,
         sortby: sortby,
         mode: mode,
-        page: currentPage
+        page: currentPage,
+        perPage: perPage
       }
     }).then(function (response) {
       return response.data;
@@ -11636,7 +11641,8 @@ function Book() {
         author_id: author_filter,
         sortby: sortby,
         mode: mode,
-        page: currentPage
+        page: currentPage,
+        perPage: perPage
       }
     }).then(function (response) {
       return response.data;
@@ -11738,6 +11744,55 @@ function Book() {
                   handleChange();
                 },
                 children: "Sort by by price:high to low"
+              })
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"], {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Toggle, {
+            id: "dropdown-basic",
+            className: ".bg-primary",
+            variant: "primary",
+            children: ["Show by ", perPage]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Menu, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                variant: "default",
+                className: "filter_btn",
+                onClick: function onClick() {
+                  setPerPage(5);
+                  handleChange();
+                },
+                children: "Show 5"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                variant: "default",
+                className: "filter_btn",
+                onClick: function onClick() {
+                  setPerPage(10);
+                  handleChange();
+                },
+                children: "Show 10"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                variant: "default",
+                className: "filter_btn",
+                onClick: function onClick() {
+                  setPerPage(15);
+                  handleChange();
+                },
+                children: "Show 15"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                variant: "default",
+                className: "filter_btn",
+                onClick: function onClick() {
+                  setPerPage(20);
+                  handleChange();
+                },
+                children: "Show 20"
               })
             })]
           })]

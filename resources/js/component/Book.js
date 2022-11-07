@@ -18,6 +18,8 @@ function Book() {
     const [sortby,setSortby]=useState();
     const [mode,setMode]=useState();
     const [currentPage,setCurrentPage]=useState();
+    
+    const [perPage,setPerPage]=useState();
     const [lastPage,setLastPage]=useState(1);
     const handleCategory=cat=>{
         setCategory_filter(cat);
@@ -48,7 +50,8 @@ function Book() {
         author_id:author_filter,
         sortby:sortby,
         mode:mode,
-        page:currentPage
+        page:currentPage,
+        perPage:perPage
     }})
     .then((response)=>response.data)
     .then((response)=>{
@@ -64,8 +67,8 @@ function Book() {
             author_id:author_filter,
             sortby:sortby,
             mode:mode,
-        page:currentPage
-            
+            page:currentPage,
+            perPage:perPage
         }})
         .then((response)=>response.data)
         .then((response)=>{
@@ -139,6 +142,42 @@ function Book() {
                                 handleChange();
                             }
                             }>Sort by by price:high to low 
+                            </Button>
+                        </Dropdown.Item>
+                    </Dropdown.Menu>                 
+                    </Dropdown>
+                    <Dropdown  >
+                    <Dropdown.Toggle  id="dropdown-basic" className='.bg-primary' variant='primary'>
+                        Show by {perPage}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item>
+                            <Button variant="default" className="filter_btn" onClick={()=>{
+                                setPerPage(5);
+                                handleChange();
+                            }}>Show 5
+                            </Button>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                            <Button variant="default" className="filter_btn" onClick={()=>{
+                                setPerPage(10);
+                                handleChange();
+                            }}>Show 10
+                            </Button>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                            <Button variant="default" className="filter_btn" onClick={()=>{
+                                setPerPage(15);
+                                handleChange();
+                            }}>Show 15
+                            </Button>
+                            </Dropdown.Item>
+                        <Dropdown.Item>
+                        <Button variant="default" className="filter_btn" onClick={()=>{
+                                setPerPage(20);
+                                handleChange();
+                            }}>Show 20
                             </Button>
                         </Dropdown.Item>
                     </Dropdown.Menu>                 
