@@ -52,7 +52,7 @@ function Cart() {
         if (localCart) setCart(localCart)
         },[]);  
         const total =cart.reduce((total,item)=>
-        total=total+(item.quantity*item.final_price),0
+        total=(total+(item.quantity*item.final_price)).toFixed(2),0
         )
         return (        
             <section className='d-flex justify-content-between px-4'>
@@ -99,7 +99,7 @@ function Cart() {
                                 <td>
                                 <div className="total-column">
                                     <p className="font-20px">
-                                        $ {item.quantity*item.final_price}
+                                        $ {(item.quantity*item.final_price).toFixed(2)}
                                         </p>
                                     </div>
                                 </td>

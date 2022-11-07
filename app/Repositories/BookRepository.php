@@ -27,6 +27,7 @@ class BookRepository implements BookRepositoryInterface
         $author_id=$request->input('author_id');
         $rating=$request->input('rating');
 
+        $per_page=$request->input('per_page');
         $books=$this->book
         ->selectraw('book.*,
             discount_start_date,
@@ -91,8 +92,14 @@ class BookRepository implements BookRepositoryInterface
         function($query) use($rating){
             $query->havingRaw('round(avg(coalesce(review.rating_start,0)),2) >='.$rating);
         })
-        ->get();  
-                
+        ->when($per_page!=null ,
+        function($query) use($per_page){
+            return $query->paginate($per_page);
+        })
+        ->when($per_page==null ,
+        function($query){
+           return $query->paginate(5);
+        });
         return $books;
     }
 
