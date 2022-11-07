@@ -20,6 +20,32 @@ function Cart() {
   const decrease = () => {
     setQuantity(count => count - 1);
   };
+  const editItem = (itemID, amount) => {
+  
+    let cartCopy = [...cart]
+    
+    //find if item exists, just in case
+    let existentItem = cartCopy.find(item => item.id == itemID);
+    
+    //if it doesnt exist simply return
+    if (!existentItem) return
+    
+    //continue and update quantity
+    existentItem.quantity += amount;
+    
+    //validate result
+    if (existentItem.quantity <= 0) {
+      //remove item  by filtering it from cart array
+      cartCopy = cartCopy.filter(item => item.id != itemID)
+    }
+    //again, update state and localState
+    setCart(cartCopy);
+    
+    let cartString = JSON.stringify(cartCopy);
+    localStorage.setItem('cart', cartString);
+    }
+    
+    
     useEffect(()=>{
         localCart = JSON.parse(localCart);
         //load persisted cart into state if it exists
@@ -40,9 +66,7 @@ function Cart() {
                     <td>Total</td>
                     </tr>
                 </thead>
-                <tbody>                  
-                    
-                
+                <tbody>    
                     {cart.map((item)=>{
                         return(
                             <tr key={item.id}>
@@ -62,10 +86,14 @@ function Cart() {
                                     </div>
                                 </td>
                                 <td>
-                                    <div className="quantity-column">
-                                    <i className="fas fa-minus"></i>
-                                    <span>{item.quantity}</span>
-                                    <i className="fas fa-plus"></i>
+                                    <div className="quantity-column d-flex container-fluid p-0">
+                                    <span className='bg-primary col-4 p-0 pointer' onClick={()=>{
+                                        editItem(item.id,-1)
+                                    }}>-</span>
+                                    <span className='bg-primary col-4 p-0' >{item.quantity}</span>
+                                    <span className='bg-primary col-4 p-0 pointer' onClick={()=>{
+                                        editItem(item.id,1)
+                                    }}>+</span>
                                     </div>
                                 </td>
                                 <td>

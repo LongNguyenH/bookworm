@@ -11263,8 +11263,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _component_navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component/navbar */ "./resources/js/component/navbar.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _component_BookOnSale__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./component/BookOnSale */ "./resources/js/component/BookOnSale.js");
 /* harmony import */ var _component_Product__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./component/Product */ "./resources/js/component/Product.js");
 /* harmony import */ var _component_Cart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./component/Cart */ "./resources/js/component/Cart.js");
@@ -11273,7 +11273,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_Book__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./component/Book */ "./resources/js/component/Book.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 /* harmony import */ var _component_Featured__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./component/Featured */ "./resources/js/component/Featured.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _component_styles_css__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./component/styles.css */ "./resources/js/component/styles.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -11311,38 +11312,38 @@ function App() {
      setLoggedIn(true);
   }; */
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_component_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_component_navbar__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
       className: "mx-5 my-3",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Routes, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
           path: "/shop",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_component_Book__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_component_Book__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
           path: "/",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)("div", {
             className: "row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_component_BookOnSale__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_component_Featured__WEBPACK_IMPORTED_MODULE_10__["default"], {})]
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_component_BookOnSale__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_component_Featured__WEBPACK_IMPORTED_MODULE_10__["default"], {})]
             })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
           path: "/product",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_component_Product__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_component_Product__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
           path: "/cart",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_component_Cart__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_component_Cart__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
           path: "/about",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_component_About__WEBPACK_IMPORTED_MODULE_7__["default"], {})
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_component_About__WEBPACK_IMPORTED_MODULE_7__["default"], {})
         })]
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_component_Footer__WEBPACK_IMPORTED_MODULE_6__["default"], {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_component_Footer__WEBPACK_IMPORTED_MODULE_6__["default"], {})]
   });
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.BrowserRouter, {
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(App, {})
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.BrowserRouter, {
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(App, {})
 }), document.getElementById('root'));
 
 /***/ }),
@@ -11900,6 +11901,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Review__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Review */ "./resources/js/component/Review.js");
 /* harmony import */ var react_bootstrap_esm_CardHeader__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/esm/CardHeader */ "./node_modules/react-bootstrap/esm/CardHeader.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -11942,6 +11947,32 @@ function Cart() {
     setQuantity(function (count) {
       return count - 1;
     });
+  };
+  var editItem = function editItem(itemID, amount) {
+    var cartCopy = _toConsumableArray(cart);
+
+    //find if item exists, just in case
+    var existentItem = cartCopy.find(function (item) {
+      return item.id == itemID;
+    });
+
+    //if it doesnt exist simply return
+    if (!existentItem) return;
+
+    //continue and update quantity
+    existentItem.quantity += amount;
+
+    //validate result
+    if (existentItem.quantity <= 0) {
+      //remove item  by filtering it from cart array
+      cartCopy = cartCopy.filter(function (item) {
+        return item.id != itemID;
+      });
+    }
+    //again, update state and localState
+    setCart(cartCopy);
+    var cartString = JSON.stringify(cartCopy);
+    localStorage.setItem('cart', cartString);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     localCart = JSON.parse(localCart);
@@ -12000,13 +12031,22 @@ function Cart() {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                  className: "quantity-column",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-                    className: "fas fa-minus"
+                  className: "quantity-column d-flex container-fluid p-0",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                    className: "bg-primary col-4 p-0 pointer",
+                    onClick: function onClick() {
+                      editItem(item.id, -1);
+                    },
+                    children: "-"
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                    className: "bg-primary col-4 p-0",
                     children: item.quantity
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-                    className: "fas fa-plus"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                    className: "bg-primary col-4 p-0 pointer",
+                    onClick: function onClick() {
+                      editItem(item.id, 1);
+                    },
+                    children: "+"
                   })]
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
@@ -12414,19 +12454,6 @@ function Product() {
   var addItem = function addItem(item) {
     //create a copy of our cart state, avoid overwritting existing state
     var cartCopy = _toConsumableArray(cart);
-
-    /* //assuming we have an ID field in our item
-    let {ID} = item;
-    
-    //look for item in cart array
-    let existingItem = cartCopy.find(cartItem => cartItem.ID == ID);
-    
-    //if item already exists
-    if (existingItem) {
-        existingItem.quantity += item.quantity //update item
-    } else { //if item doesn't exist, simply add it
-      cartCopy.push(item)
-    } */
     cartCopy.push(item);
     //update app state
     setCart(cartCopy);
@@ -18078,7 +18105,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navbar{\r\n    background-color: blue;\r\n}\r\na{\r\n    text-decoration: none !important; \r\n    color: white !important;\r\n}\r\n.navbar .menu-item {\r\n    color: white;\r\n    text-decoration: none;\r\n}\r\n.navbar .menu-item:hover .menu-item-text{\r\n    color: red;\r\n}\r\n.menu-item{\r\n    cursor: pointer;\r\n}\r\n.banner-top img{\r\n    max-height: 200px;\r\n}\r\n.submit-btn\r\n{\r\n    margin: auto ;\r\n    display: block !important;\r\n}\r\n.card-container{\r\n    cursor: pointer;\r\n    padding: 0 !important;\r\n    width: calc(25% - 0.5rem) !important;\r\n}\r\n\r\n.card-btn{\r\n    width: 100%;\r\n}\r\n.card-title{\r\n    text-align: center;\r\n    font-weight: bold;\r\n    text-transform: uppercase;\r\n}\r\n.card-price{\r\n    text-align: left;\r\n    background-color: aqua !important;\r\n}\r\n.filter_btn{\r\n    background-color: transparent !important;\r\n    border: none !important;\r\n\r\n}\r\n.product-column img {\r\n    width: 8rem;\r\n    height: 100%;\r\n    vertical-align: middle;\r\n}\r\n.price-column {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: flex-start;\r\n}\r\n\r\n.quantity-column {\r\n    display: flex;\r\n    align-items: center;\r\n    background-color: var(--light-gray);\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n.quantity-column i {\r\n    color: var(--gray);\r\n    padding: 1rem;\r\n    cursor: pointer;\r\n}\r\n\r\n.quantity-column span {\r\n    flex: 1;\r\n    text-align: center;\r\n    padding: 1rem;\r\n}\r\n#footer{\r\n    border-top: 1px solid black;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navbar{\r\n    background-color: blue;\r\n}\r\na{\r\n    text-decoration: none !important; \r\n    color: white !important;\r\n}\r\n.navbar .menu-item {\r\n    color: white;\r\n    text-decoration: none;\r\n}\r\n.navbar .menu-item:hover .menu-item-text{\r\n    color: red;\r\n}\r\n.menu-item{\r\n    cursor: pointer;\r\n}\r\n.banner-top img{\r\n    max-height: 200px;\r\n}\r\n.submit-btn\r\n{\r\n    margin: auto ;\r\n    display: block !important;\r\n}\r\n.card-container{\r\n    cursor: pointer;\r\n    padding: 0 !important;\r\n    width: calc(25% - 0.5rem) !important;\r\n}\r\n\r\n.card-btn{\r\n    width: 100%;\r\n}\r\n.card-title{\r\n    text-align: center;\r\n    font-weight: bold;\r\n    text-transform: uppercase;\r\n}\r\n.card-price{\r\n    text-align: left;\r\n    background-color: aqua !important;\r\n}\r\n.filter_btn{\r\n    background-color: transparent !important;\r\n    border: none !important;\r\n\r\n}\r\n.product-column img {\r\n    width: 8rem;\r\n    height: 100%;\r\n    vertical-align: middle;\r\n}\r\n.price-column {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    align-items: flex-start;\r\n}\r\n\r\n.quantity-column {\r\n    display: flex;\r\n    align-items: center;\r\n    background-color: var(--light-gray);\r\n    border-radius: 0.375rem;\r\n}\r\n\r\n.quantity-column i {\r\n    color: var(--gray);\r\n    padding: 1rem;\r\n    cursor: pointer;\r\n}\r\n.pointer{\r\n    cursor: pointer;\r\n}\r\n\r\n.quantity-column span {\r\n    flex: 1;\r\n    text-align: center;\r\n    padding: 1rem;\r\n}\r\n#footer{\r\n    border-top: 1px solid black;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -25,19 +25,7 @@ function Product() {
   
     //create a copy of our cart state, avoid overwritting existing state
     let cartCopy = [...cart];
-    
-    /* //assuming we have an ID field in our item
-    let {ID} = item;
-    
-    //look for item in cart array
-    let existingItem = cartCopy.find(cartItem => cartItem.ID == ID);
-    
-    //if item already exists
-    if (existingItem) {
-        existingItem.quantity += item.quantity //update item
-    } else { //if item doesn't exist, simply add it
-      cartCopy.push(item)
-    } */
+
     cartCopy.push(item)
     //update app state
     setCart(cartCopy)

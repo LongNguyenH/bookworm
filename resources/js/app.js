@@ -25,7 +25,7 @@ import About from './component/About';
 import Book from './component/Book';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Featured from './component/Featured';
-
+import './component/styles.css';
 /* import Login from './component/Login'; */
 
 function App() {
