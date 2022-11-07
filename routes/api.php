@@ -26,21 +26,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-/* Route::apiResource('/books',BookController::class); */
-Route::apiResource('/category',CategoryController::class);
 /* Route::apiResource('/author',AuthorController::class); */
 Route::apiResource('/user',UserController::class);
 
-/* Route::get('/sale',[BookController::class,'sale']);
-Route::get('/rating',[BookController::class,'rating']);
-Route::get('bookbyid/{id}',[BookController::class,'bookById']);
-Route::get('/filter',[BookController::class,'filter']); */
 
-Route::get('/reviewById',[Reviewcontroller::class,'reviewById']);
 
 Route::post('register',[AuthController::class,'createUser']);
 Route::post('login', [AuthController::class,'login']);
-Route::get('userbyid/{id}', [UserController::class,'userById']);
 Route::apiResource('users', UserController::class)->middleware('auth:sanctum');
 
 /* Route::middleware(['auth:sanctum'])->group(function () {

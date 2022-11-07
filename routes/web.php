@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('index');
-});
-Route::get('/welcome', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/book',[BookController::class, 'get']);
+}); */
+Route::get('/{path?}', function () {
+    return view('welcome');
+})->where('path', '^(?!api).*?');

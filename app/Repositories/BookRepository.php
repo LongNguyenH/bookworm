@@ -33,7 +33,7 @@ class BookRepository implements BookRepositoryInterface
             discount_end_date,
             author.author_name as author_name,
             coalesce(discount_price, 0) as discount_price ,
-            round(avg(coalesce(review.rating_start,0)),2) as avgrating,
+            round(avg(coalesce(review.rating_start,0)),2) as avg_rating,
             case
                 when 
                     (discount_start_date <= now() 
@@ -149,14 +149,32 @@ class BookRepository implements BookRepositoryInterface
     }
     public function getRecommended()
     {
-        $books = $this->book->select(
-            'book.*',
-            DB::raw('AVG(review.rating_start) AS avg_rating'),
-            DB::raw('author.author_name as author_name'),
-        )
+        $books = $this->book
+        ->selectraw('book.*,
+            discount_start_date,
+            discount_end_date,
+            author.author_name as author_name,
+            coalesce(discount_price, 0) as discount_price ,
+            round(avg(coalesce(review.rating_start,0)),2) as avg_rating,
+            case
+                when 
+                    (discount_start_date <= now() 
+                        and discount_price !=0
+                        and (discount_end_date >= now() 
+                        or discount_end_date  IS null))
+                    then discount_price 
+                else 
+                    book_price 
+                end 
+                as 
+                    final_price,
+            count(review.book_id) as count_review
+            
+            ')
         ->leftJoin('author','author.id','=','book.author_id')
-        ->join('review','book.id','=','book_id')
-        ->groupBy('book.id','author_name')
+        ->leftjoin('discount','discount.book_id','=','book.id')
+        ->join('review','book.id','=','review.book_id')
+        ->groupBy('book.id','discount_start_date','discount_end_date','discount_price','author_name')
         ->orderBy('avg_rating')
         ->orderBy('book_price')
         ->limit(env('POPULAR_ITEM_GET_LIMIT'))->get();
@@ -164,14 +182,32 @@ class BookRepository implements BookRepositoryInterface
     }
     public function getPopular()
     {
-        $books = $this->book->select(
-            'book.*',
-            DB::raw('count(review.book_id) AS count_review'),
-            DB::raw('author.author_name as author_name'),
-            )
-        ->leftJoin('review','book.id','=','book_id')
-        ->leftJoin('author','author.id','=','book.author_id')
-        ->groupBy('book.id','author_name')
+        $books = $this->book
+        ->selectraw('book.*,
+        discount_start_date,
+        discount_end_date,
+        author.author_name as author_name,
+        coalesce(discount_price, 0) as discount_price ,
+        round(avg(coalesce(review.rating_start,0)),2) as avg_rating,
+        case
+            when 
+                (discount_start_date <= now() 
+                    and discount_price !=0
+                    and (discount_end_date >= now() 
+                    or discount_end_date  IS null))
+                then discount_price 
+            else 
+                book_price 
+            end 
+            as 
+                final_price,
+        count(review.book_id) as count_review
+        
+        ')
+    ->leftJoin('author','author.id','=','book.author_id')
+    ->leftjoin('discount','discount.book_id','=','book.id')
+    ->join('review','book.id','=','review.book_id')
+    ->groupBy('book.id','discount_start_date','discount_end_date','discount_price','author_name')
         ->orderBy('count_review','desc')
         ->orderBy('book_price')
         ->limit(env('POPULAR_ITEM_GET_LIMIT'))->get();
