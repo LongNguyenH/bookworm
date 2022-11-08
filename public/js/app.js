@@ -13080,7 +13080,7 @@ function Cart() {
     if (localCart) setCart(localCart);
   }, []);
   var total = cart.reduce(function (total, item) {
-    return total = (total + item.quantity * item.final_price).toFixed(2);
+    return total = total + item.quantity * item.final_price;
   }, 0);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
     className: "d-flex justify-content-between px-4",
@@ -13154,7 +13154,7 @@ function Cart() {
                   className: "total-column",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
                     className: "font-20px",
-                    children: ["$ ", (item.quantity * item.final_price).toFixed(2)]
+                    children: ["$ ", item.quantity * item.final_price]
                   })
                 })
               })]
