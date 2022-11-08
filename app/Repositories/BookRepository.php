@@ -93,14 +93,6 @@ class BookRepository implements BookRepositoryInterface
         function($query) use($rating){
             $query->havingRaw('round(avg(coalesce(review.rating_start,0)),2) >='.$rating);
         })
-        /* ->when($per_page!=null ,
-        function($query) use($per_page){
-            return $query->paginate($per_page);
-        }) */
-        /* ->when($per_page==null ,
-        function($query){
-           return $query->paginate(5);
-        }) */
         ->paginate($per_page);
         return $books;
     }

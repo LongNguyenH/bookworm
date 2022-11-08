@@ -9,14 +9,8 @@ a{
     color: white;
     text-decoration: none;
 }
-.navbar .menu-item:hover .menu-item-text{
-    color: red;
-}
 .menu-item{
     cursor: pointer;
-}
-.banner-top img{
-    max-height: 200px;
 }
 .submit-btn
 {

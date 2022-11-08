@@ -15,7 +15,6 @@ require('./bootstrap');
 import React from 'react';
 import ReactDOM from 'react-dom';/* 
 import './App.css'; */
-import Navbar from './component/navbar';
 import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import Sale from './component/BookOnSale';
 import Product from './component/Product';
@@ -26,6 +25,7 @@ import Book from './component/Book';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Featured from './component/Featured';
 import './component/styles.css';
+import Navbartop from './component/navbar';
 /* import Login from './component/Login'; */
 
 function App() {
@@ -38,12 +38,11 @@ function App() {
 
   return (
     <React.Fragment>
-    <Navbar/>
+    <Navbartop/>
       <div className="mx-5 my-3">
         <Routes>
           <Route path='/shop' element={ 
               <Book/>
-
           }/>
           <Route path='/' element={ 
             <div className='row'>

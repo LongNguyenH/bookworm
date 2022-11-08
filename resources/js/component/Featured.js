@@ -14,7 +14,7 @@ export default class Featured extends React.Component {
     recommendedBooks: [],
     popularBooks: [],
     defaultBooks: [],
-    recommended: true //button
+    recommended: true 
   };
   componentDidMount() {
     
@@ -65,7 +65,7 @@ export default class Featured extends React.Component {
   render() {
     
     return (
-      <section className="home-page flex-grow-1">
+      <section className="">
         <div className="container">
           
           <div className="book-list">
@@ -89,7 +89,6 @@ export default class Featured extends React.Component {
               {this.state.defaultBooks.map((book) => {
                 
                 return (
-
                   <Link className='card-container row m-0' 
                                 key={book.id} to={'/product'}
                                 state={{ product_id: (book.id) }} >

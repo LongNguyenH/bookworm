@@ -1,40 +1,80 @@
 import React, {Component, useState} from 'react';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles.css';
-
-function Navbar() {
+import { useEffect } from "react";
+function Navbartop() {
     const [userName,setUserName]=useState(['Long',]);
+    const [url,setUrl]=useState();
+    const [nav_bar,setNavBar]=useState();
+    useEffect(()=>{
+        setUrl(window.location.pathname);
+        
+    },[])
         return (
-            /* Header */
-            <nav className="navbar navbar-expand-lg navbar-light bg-primary sticky-top px-5">
-            <Link className="navbar-brand" to="#">Logo</Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
-                <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <Link className="nav-link" to="/">Home</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/shop">Shop</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/about">About</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/cart">Cart(0)</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/login">Sign in</Link>
-                    </li>
-
-                </ul>
-
-            </div>
-        </nav>
+            <Navbar className='bg-primary sticky-top p-0 m-0'>
+                <Container className='my-3'>
+        <Navbar.Brand><Link className="navbar-brand" to="/">
+    <img src={require("../../assets/bookworm_icon.svg").default}>
+    </img>Bookworm
+        </Link></Navbar.Brand>
+        <Nav>
+        {url=='/'&&
+            <Nav.Link className="nav-item active ">
+                <Link className="nav-link text-decoration-underline" to="/">Home</Link>
+            </Nav.Link>
+        }
+        {url!='/'&&    
+            <Nav.Link className="nav-item ">
+                <Link className="nav-link" to="/">Home</Link>
+            </Nav.Link>
+        }
+        {url=='/shop'&&
+            <Nav.Link className="nav-item  ">
+                <Link className="nav-link text-decoration-underline" to="/shop">Shop</Link>
+            </Nav.Link>
+        }
+        {url!='/shop'&&
+            <Nav.Link className="nav-item">
+                <Link className="nav-link" to="/shop">Shop</Link>
+            </Nav.Link>
+        }
+        {url=='/about'&&
+            <Nav.Link className="nav-item ">
+                <Link className="nav-link text-decoration-underline" to="/about">About</Link>
+            </Nav.Link>
+        }
+        {url!='/about'&&
+            <Nav.Link className="nav-item">
+                <Link className="nav-link" to="/about">About</Link>
+            </Nav.Link>
+        }
+        {url=='/Cart'&&
+            <Nav.Link className="nav-item ">
+                <Link className="nav-link text-decoration-underline" to="/cart">Cart</Link>
+            </Nav.Link>
+        }
+        {url!='/Cart'&&
+            <Nav.Link className="nav-item">
+                <Link className="nav-link" to="/cart">Cart</Link>
+            </Nav.Link>
+        }
+        {url=='/Login'&&
+            <Nav.Link className="nav-item ">
+                <Link className="nav-link text-decoration-underline" to="/login">Sign in</Link>
+            </Nav.Link>
+        }
+        {url!='/Login'&&
+            <Nav.Link className="nav-item">
+                <Link className="nav-link" to="/login">Sign in</Link>
+            </Nav.Link>
+        }
+            <Nav.Link></Nav.Link>
+        </Nav>
+        </Container>
+            </Navbar>
+            
         )
 }
 
-export default Navbar;
+export default Navbartop;

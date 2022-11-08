@@ -76,9 +76,7 @@ function Sale() {
                                     </Card.Body>
                                     <ListGroup className="list-group-flush">
                                     {book.book_price===book.final_price &&
-                                    
                                         <ListGroup.Item className="card-price bg-primary text-white d-flex">${book.book_price}</ListGroup.Item>
-                                    
                                     }
                                     {book.book_price!==book.final_price &&
                                         <ListGroup.Item className="card-price bg-primary text-white d-flex">
