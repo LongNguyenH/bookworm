@@ -20,7 +20,7 @@ function Author({handleAuthor}) {
         <section className='flex-column d-flex '>
         {authors.map((author)=>{
                 return(
-                    <Button variant="default" className="filter_btn container-fluid p-0" key={author.id} onClick={()=>{
+                    <Button variant="default" className="filter_btn container-fluid p-0 text-start" key={author.id} onClick={()=>{
                         setAuthor_filter(author.id);
                         setAuthorName(author.author_name);
                         handleAuthor(author.id,author.author_name);

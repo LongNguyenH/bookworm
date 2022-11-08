@@ -20,7 +20,7 @@ function Category({handleCategory}) {
         <div className='flex-column d-flex '>
             {categories.map((category)=>{
                 return(
-                    <Button variant="default" className="filter_btn container-fluid p-0" key={category.id} onClick={()=>{
+                    <Button variant="default" className="filter_btn container-fluid p-0 text-start" key={category.id} onClick={()=>{
                         setCategory_filter(category.id);
                         handleCategory(category.id,category.category_name);
 

@@ -12289,7 +12289,7 @@ function Author(_ref) {
     children: authors.map(function (author) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
         variant: "default",
-        className: "filter_btn container-fluid p-0",
+        className: "filter_btn container-fluid p-0 text-start",
         onClick: function onClick() {
           setAuthor_filter(author.id);
           setAuthorName(author.author_name);
@@ -12370,32 +12370,36 @@ function Book() {
     setCategory_filter = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState8 = _slicedToArray(_useState7, 2),
-    sortby = _useState8[0],
-    setSortby = _useState8[1];
+    rating_filter = _useState8[0],
+    setRating_filter = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState10 = _slicedToArray(_useState9, 2),
-    mode = _useState10[0],
-    setMode = _useState10[1];
+    sortby = _useState10[0],
+    setSortby = _useState10[1];
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState12 = _slicedToArray(_useState11, 2),
-    currentPage = _useState12[0],
-    setCurrentPage = _useState12[1];
+    mode = _useState12[0],
+    setMode = _useState12[1];
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState14 = _slicedToArray(_useState13, 2),
-    author_name = _useState14[0],
-    setAuthorName = _useState14[1];
+    currentPage = _useState14[0],
+    setCurrentPage = _useState14[1];
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState16 = _slicedToArray(_useState15, 2),
-    category_name = _useState16[0],
-    setCategoryName = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(5),
+    author_name = _useState16[0],
+    setAuthorName = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
     _useState18 = _slicedToArray(_useState17, 2),
-    perPage = _useState18[0],
-    setPerPage = _useState18[1];
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    category_name = _useState18[0],
+    setCategoryName = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(5),
     _useState20 = _slicedToArray(_useState19, 2),
-    lastPage = _useState20[0],
-    setLastPage = _useState20[1];
+    perPage = _useState20[0],
+    setPerPage = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState22 = _slicedToArray(_useState21, 2),
+    lastPage = _useState22[0],
+    setLastPage = _useState22[1];
   var handleCategory = function handleCategory(cat, name) {
     setCategory_filter(cat);
     setCategoryName(name);
@@ -12437,9 +12441,40 @@ function Book() {
       }));
     }
   };
-  for (var i = 1; i < lastPage; i++) {
+  for (var i = 1; i <= lastPage; i++) {
     _loop(i);
   }
+  var setPagination = function setPagination() {
+    var _loop2 = function _loop2(_i2) {
+      if (_i2 != currentPage) {
+        paginationNumber.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+          className: "page-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            className: "text-color-black page-link",
+            onClick: function onClick() {
+              return handlePageClick(_i2);
+            },
+            children: _i2
+          })
+        }));
+      }
+      if (_i2 == currentPage) {
+        paginationNumber.push( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+          className: "page-item",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            className: "text-color-black page-link bg-primary text-white",
+            onClick: function onClick() {
+              return handlePageClick(_i2);
+            },
+            children: _i2
+          })
+        }));
+      }
+    };
+    for (var _i2 = 1; _i2 <= lastPage; _i2++) {
+      _loop2(_i2);
+    }
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     function fetchMyAPI() {
       return _fetchMyAPI.apply(this, arguments);
@@ -12455,6 +12490,7 @@ function Book() {
                   params: {
                     category_id: category_filter,
                     author_id: author_filter,
+                    rating: rating_filter,
                     sortby: sortby,
                     mode: mode,
                     page: currentPage,
@@ -12478,6 +12514,7 @@ function Book() {
                   setBooks(books_response);
                   setCurrentPage(response.current_page);
                   setLastPage(response.last_page);
+                  setPagination();
                 });
               case 2:
               case "end":
@@ -12514,6 +12551,8 @@ function Book() {
         children: ["Category:", category_name]
       }), author_name != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
         children: ["Author:", author_name]
+      }), rating_filter != null && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
+        children: ["Rating:", rating_filter]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "d-flex justify-content-between flex-wrap",
@@ -12530,7 +12569,7 @@ function Book() {
                 children: "Category"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_9__["default"].Body, {
-              className: "container-fluid p-0",
+              className: "container-fluid py-0 px-3",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Category__WEBPACK_IMPORTED_MODULE_2__["default"], {
                 handleCategory: handleCategory
               })
@@ -12544,9 +12583,59 @@ function Book() {
                 children: "Author"
               })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_9__["default"].Body, {
-              className: "container-fluid p-0",
+              className: "container-fluid py-0 px-3",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Author__WEBPACK_IMPORTED_MODULE_3__["default"], {
                 handleAuthor: handleAuthor
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_9__["default"].Item, {
+            eventKey: "2",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_9__["default"].Header, {
+              className: "p-0",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+                className: "fw-bold container-fluid p-0 m-0",
+                children: "Rating"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_9__["default"].Body, {
+              className: "container-fluid py-0 px-3",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                className: "flex-column d-flex ",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  variant: "default",
+                  className: "filter_btn container-fluid p-0 text-start",
+                  onClick: function onClick() {
+                    setRating_filter(1);
+                  },
+                  children: "1"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  variant: "default",
+                  className: "filter_btn container-fluid p-0 text-start",
+                  onClick: function onClick() {
+                    setRating_filter(2);
+                  },
+                  children: "2"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  variant: "default",
+                  className: "filter_btn container-fluid p-0 text-start",
+                  onClick: function onClick() {
+                    setRating_filter(3);
+                  },
+                  children: "3"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  variant: "default",
+                  className: "filter_btn container-fluid p-0 text-start",
+                  onClick: function onClick() {
+                    setRating_filter(4);
+                  },
+                  children: "4"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+                  variant: "default",
+                  className: "filter_btn container-fluid p-0 text-start",
+                  onClick: function onClick() {
+                    setRating_filter(5);
+                  },
+                  children: "5"
+                })]
               })
             })]
           })]
@@ -12666,7 +12755,7 @@ function Book() {
             })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-          className: "d-flex flex-row row row-cols-4 gap-2 m-0 justify-content-between",
+          className: "d-flex flex-row row row-cols-4 gap-2 m-0 justify-content-left",
           children: books.map(function (book) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link, {
               className: "card-container row m-0",
@@ -12702,7 +12791,7 @@ function Book() {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("nav", {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ul", {
                 className: "pagination d-flex justify-content-center flex-wrap",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+                children: [currentPage > 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
                   className: "page-item",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                     className: "text-color-black page-link",
@@ -12711,7 +12800,7 @@ function Book() {
                     },
                     children: "Previous"
                   })
-                }), paginationNumber, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
+                }), paginationNumber, currentPage < lastPage && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
                   className: "page-item",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
                     className: "text-color-black page-link",
@@ -13163,7 +13252,7 @@ function Category(_ref) {
     children: categories.map(function (category) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
         variant: "default",
-        className: "filter_btn container-fluid p-0",
+        className: "filter_btn container-fluid p-0 text-start",
         onClick: function onClick() {
           setCategory_filter(category.id);
           handleCategory(category.id, category.category_name);

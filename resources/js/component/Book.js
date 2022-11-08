@@ -16,6 +16,8 @@ function Book() {
 
     const [author_filter,setAuthor_filter]=useState();
     const [category_filter,setCategory_filter]=useState();
+    const [rating_filter,setRating_filter]=useState();
+
     const [sortby,setSortby]=useState();
     const [mode,setMode]=useState();
     const [currentPage,setCurrentPage]=useState();
@@ -37,7 +39,7 @@ function Book() {
     const handlePageClick= (page)=>{
         setCurrentPage(page);
     }
-    for(let i = 1; i < lastPage; i++) {
+    for(let i = 1; i <= lastPage; i++) {
         if (i!= currentPage) {
             paginationNumber.push(
             <li className="page-item">
@@ -63,12 +65,42 @@ function Book() {
                 )
         }
     }
+    const setPagination=()=>{
+        for(let i = 1; i <=lastPage; i++) {
+            if (i!= currentPage) {
+                paginationNumber.push(
+                <li className="page-item">
+                <Button className="text-color-black page-link" 
+                onClick={()=>
+                    handlePageClick(i)
+                }>
+                    {i}
+                </Button>
+                </li>
+                )
+            }
+            if (i== currentPage) {
+                paginationNumber.push(
+                    <li className="page-item">
+                    <Button className="text-color-black page-link bg-primary text-white" 
+                    onClick={()=>
+                        handlePageClick(i)
+                    }>
+                        {i}
+                    </Button>
+                    </li>
+                    )
+            }
+        }
+    }
+    
   useEffect(()=>{
     async function fetchMyAPI() {
         await api
         .get(`api/books`,{params:{
             category_id:category_filter,
             author_id:author_filter,
+            rating:rating_filter,
             sortby:sortby,
             mode:mode,
             page:currentPage,
@@ -92,11 +124,12 @@ function Book() {
             setBooks(books_response);
             setCurrentPage(response.current_page);
             setLastPage(response.last_page);
+            
+            setPagination();
         });
         
     }
     fetchMyAPI();
-    
     },[author_filter,category_filter,currentPage,perPage]);
     /* function handleChange(){
         api
@@ -126,26 +159,62 @@ function Book() {
                     {author_name!=null&&
                     <p>Author:{author_name}</p>
                     }
-                    
+                    {rating_filter!=null&&
+                    <p>Rating:{rating_filter}</p>
+                    }
                 </div>
                 <div className='d-flex justify-content-between flex-wrap'>
                     <div className="col-12 col-lg-2 mb-4 pe-3" >
                     <Accordion defaultActiveKey="0">
                         <Accordion.Item eventKey="0">
-                        <Accordion.Header className='p-0'>
-                            <p className='fw-bold container-fluid p-0 m-0'>Category</p>
-                        </Accordion.Header>
-                        <Accordion.Body className='container-fluid p-0'>
-                            <Category handleCategory={handleCategory}/>
-                        </Accordion.Body>
+                            <Accordion.Header className='p-0'>
+                                <p className='fw-bold container-fluid p-0 m-0'>Category</p>
+                            </Accordion.Header>
+                            <Accordion.Body className='container-fluid py-0 px-3'>
+                                <Category handleCategory={handleCategory}/>
+                            </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                        <Accordion.Header className='p-0'>
-                            <p className='fw-bold container-fluid p-0 m-0'>Author</p>
-                        </Accordion.Header>
-                        <Accordion.Body className='container-fluid p-0'>
-                            <Author handleAuthor={handleAuthor}/>
-                        </Accordion.Body>
+                            <Accordion.Header className='p-0'>
+                                <p className='fw-bold container-fluid p-0 m-0'>Author</p>
+                            </Accordion.Header>
+                            <Accordion.Body className='container-fluid py-0 px-3'>
+                                <Author handleAuthor={handleAuthor}/>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header className='p-0'>
+                                <p className='fw-bold container-fluid p-0 m-0'>Rating</p>
+                            </Accordion.Header>
+                            <Accordion.Body className='container-fluid py-0 px-3'>
+                                <div className='flex-column d-flex '>
+                                    <Button variant="default" className="filter_btn container-fluid p-0 text-start" onClick={()=>{
+                                        setRating_filter(1);
+                                    }}>
+                                        1
+                                    </Button> 
+                                    <Button variant="default" className="filter_btn container-fluid p-0 text-start" onClick={()=>{
+                                        setRating_filter(2);
+                                    }}>
+                                        2
+                                    </Button> 
+                                    <Button variant="default" className="filter_btn container-fluid p-0 text-start" onClick={()=>{
+                                        setRating_filter(3);
+                                    }}>
+                                        3
+                                    </Button> 
+                                    <Button variant="default" className="filter_btn container-fluid p-0 text-start" onClick={()=>{
+                                        setRating_filter(4);
+                                    }}>
+                                        4
+                                    </Button> 
+                                    <Button variant="default" className="filter_btn container-fluid p-0 text-start" onClick={()=>{
+                                        setRating_filter(5);
+                                    }}>
+                                        5
+                                    </Button> 
+                                </div>
+                            </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
                     
@@ -235,7 +304,7 @@ function Book() {
                                 </Dropdown>
                             </div>
                         </div>
-                        <div className='d-flex flex-row row row-cols-4 gap-2 m-0 justify-content-between'>
+                        <div className='d-flex flex-row row row-cols-4 gap-2 m-0 justify-content-left'>
                             {books.map((book)=>{
                                 return(
                                     <Link className='card-container row m-0' 
@@ -264,23 +333,28 @@ function Book() {
                         <div className="col-12 d-flex justify-content-center">
                             <nav>
                             <ul className="pagination d-flex justify-content-center flex-wrap">
-                                <li className="page-item">
-                                <Button className="text-color-black page-link" 
-                                onClick={()=>
-                                    handlePageClick(currentPage-1)
-                                }>
-                                    Previous
-                                </Button>
-                                </li>
+                                {currentPage > 1 &&
+                                    <li className="page-item">
+                                    <Button className="text-color-black page-link" 
+                                    onClick={()=>
+                                        handlePageClick(currentPage-1)
+                                    }>
+                                        Previous
+                                    </Button>
+                                    </li>
+                                }
                                 {paginationNumber}
-                                <li className="page-item">
-                                <Button className="text-color-black page-link" 
-                                onClick={()=>
-                                    handlePageClick(currentPage+1)
-                                }>
-                                    Next
-                                </Button>
-                                </li>
+                                {currentPage<lastPage &&
+                                    <li className="page-item">
+                                    <Button className="text-color-black page-link" 
+                                    onClick={()=>
+                                        handlePageClick(currentPage+1)
+                                    }>
+                                        Next
+                                    </Button>
+                                    </li>
+                                }
+                                
                             </ul>
                             </nav>
                         </div>
