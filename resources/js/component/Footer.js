@@ -1,6 +1,6 @@
 function Footer(){
     return(
-        <footer className="bg-light px-5 pt-3">
+        <footer className="bg-light px-5 pt-3 d-flex">
             <div className="logo ">
                 <img src={require("../../assets/bookworm_icon.svg").default} alt="" />
             </div>
