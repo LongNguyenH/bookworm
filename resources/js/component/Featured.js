@@ -100,7 +100,15 @@ export default class Featured extends React.Component {
                             <Card.Text>{book.author_name}</Card.Text>
                         </Card.Body>
                         <ListGroup className="list-group-flush">
-                            <ListGroup.Item className="card-price bg-primary text-white">${book.book_price}</ListGroup.Item>
+                                    {book.book_price===book.final_price &&
+                                        <ListGroup.Item className="card-price bg-primary text-white d-flex">${book.book_price}</ListGroup.Item>
+                                    }
+                                    {book.book_price!==book.final_price &&
+                                        <ListGroup.Item className="card-price bg-primary text-white d-flex">
+                                            <p className='text-decoration-line-through'>${book.book_price}</p> <p className='fw-bold'>${book.final_price}</p>
+                                        </ListGroup.Item>
+                                    
+                                    }
                         </ListGroup>
                     </Card>         
                     </Link>              
