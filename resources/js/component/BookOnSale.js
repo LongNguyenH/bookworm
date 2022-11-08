@@ -79,7 +79,7 @@ function Sale() {
                                     }
                                     {book.book_price!==book.final_price &&
                                         <ListGroup.Item className="card-price bg-primary text-white d-flex">
-                                            <p className='strike-through'>${book.book_price}</p> <p className='fw-bold'>${book.final_price}</p>
+                                            <p className='text-decoration-line-through'>${book.book_price}</p> <p className='fw-bold'>${book.final_price}</p>
                                         </ListGroup.Item>
                                     
                                     }

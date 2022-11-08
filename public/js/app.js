@@ -12526,7 +12526,7 @@ function Book() {
       return _fetchMyAPI.apply(this, arguments);
     }
     fetchMyAPI();
-  }, [author_filter, category_filter, currentPage, perPage]);
+  }, [author_filter, category_filter, currentPage, perPage, sortby, mode]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("section", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "d-flex",
@@ -12757,12 +12757,21 @@ function Book() {
                   }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Text, {
                     children: book.author_name
                   })]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_13__["default"], {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_13__["default"], {
                   className: "list-group-flush",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_13__["default"].Item, {
-                    className: "card-price bg-primary text-white",
+                  children: [book.book_price === book.final_price && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_13__["default"].Item, {
+                    className: "card-price bg-primary text-white d-flex",
                     children: ["$", book.book_price]
-                  })
+                  }), book.book_price !== book.final_price && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_13__["default"].Item, {
+                    className: "card-price bg-primary text-white d-flex",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
+                      className: "text-decoration-line-through",
+                      children: ["$", book.book_price]
+                    }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
+                      className: "fw-bold",
+                      children: ["$", book.final_price]
+                    })]
+                  })]
                 })]
               })
             }, book.id);
@@ -12953,7 +12962,7 @@ function Sale() {
                 }), book.book_price !== book.final_price && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_bootstrap__WEBPACK_IMPORTED_MODULE_10__["default"].Item, {
                   className: "card-price bg-primary text-white d-flex",
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
-                    className: "strike-through",
+                    className: "text-decoration-line-through",
                     children: ["$", book.book_price]
                   }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
                     className: "fw-bold",
