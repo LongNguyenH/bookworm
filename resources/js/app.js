@@ -49,19 +49,7 @@ function App() {
             <div className='row'>
             <React.Fragment>   
               <Sale/>
-              <Featured />
-              {/* <Tabs
-                defaultActiveKey="profile"
-                id="uncontrolled-tab-example"
-                className="mb-3"
-              >
-                <Tab eventKey="Recommended" title="Recommended">
-                  <Recommend/>
-                </Tab>
-                <Tab eventKey="Popular" title="Popular">
-                  <Popular/>
-                </Tab>
-              </Tabs> */}
+              <Featured/>
             </React.Fragment>
             </div>
           }/>

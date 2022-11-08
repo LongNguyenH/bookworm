@@ -6,6 +6,7 @@ import api from '../api';
 function Author({handleAuthor}) {
     const [authors,setAuthors]=useState([]);   
     const [author_filter,setAuthor_filter]=useState();
+    const [author_name,setAuthorName]=useState();
   useEffect(()=>{
     api
     .get("api/authors")
@@ -16,18 +17,19 @@ function Author({handleAuthor}) {
     },[]);
     
     return (   
-        <div className='flex-column d-flex '>
+        <section className='flex-column d-flex '>
         {authors.map((author)=>{
                 return(
                     <Button variant="default" className="filter_btn container-fluid p-0" key={author.id} onClick={()=>{
                         setAuthor_filter(author.id);
-                        handleAuthor(author.id);
+                        setAuthorName(author.author_name);
+                        handleAuthor(author.id,author.author_name);
                     }}>
                     {author.author_name}
                     </Button>                
                 );
             })}
-        </div>          
+        </section>          
     )
     
 }

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import { objectBookCover } from './BookCover';
+import api from '../api';
 
 
 export default class Featured extends React.Component {
@@ -17,7 +18,8 @@ export default class Featured extends React.Component {
   };
   componentDidMount() {
     
-    axios.get('http://bookworm.com/api/books/recommended').then((result) => {
+    api
+    .get('api/books/recommended').then((result) => {
       // console.log(result.data);
       const recommendedBooks = result.data;
       recommendedBooks.map((book) =>
@@ -33,7 +35,8 @@ export default class Featured extends React.Component {
       );
       this.setState({ recommendedBooks, defaultBooks: recommendedBooks });
     });
-    axios.get('http://bookworm.com/api/books/popular').then((result) => {
+    api
+    .get('http://bookworm.com/api/books/popular').then((result) => {
       // console.log(result.data);
       const popularBooks = result.data;
       popularBooks.map((book) =>
@@ -101,7 +104,7 @@ export default class Featured extends React.Component {
                             <Card.Text>{book.author_name}</Card.Text>
                         </Card.Body>
                         <ListGroup className="list-group-flush">
-                            <ListGroup.Item className="card-price">${book.book_price}</ListGroup.Item>
+                            <ListGroup.Item className="card-price bg-primary text-white">${book.book_price}</ListGroup.Item>
                         </ListGroup>
                     </Card>         
                     </Link>              

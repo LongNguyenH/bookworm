@@ -15,7 +15,7 @@ const Login = (props) => {
 
         e.preventDefault();
 
-        /* axios.get('http://bookworm.com/api/sanctum/csrf-cookie')
+        axios.get('http://bookworm.com/api/sanctum/csrf-cookie')
 
         .then(response => {
 
@@ -31,7 +31,7 @@ const Login = (props) => {
 
             })
 
-        }); */
+        });
         apiClient.get('/sanctum/csrf-cookie')
 
         .then(response => {

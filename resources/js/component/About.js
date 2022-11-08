@@ -1,9 +1,8 @@
 function About(){
     return(
-    <section className="about-page flex-grow-1 d-flex align-items-center">
-        <div className="container">
+    <section className="d-flex align-items-center">
         
-        <div className="row py-3 px-5">
+        <div className="row py-2 px-4">
             <div className="col-md-12">
                 <h2 className="text-center">Welcome to bookworm</h2>
                 <p>Bookworm is an independent New York bookstore and language school with locations in
@@ -31,8 +30,6 @@ function About(){
             </div>
         </div>
         
-        </div>
-    
     </section>
     );
     }

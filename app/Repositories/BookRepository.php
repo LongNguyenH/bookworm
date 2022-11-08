@@ -34,6 +34,7 @@ class BookRepository implements BookRepositoryInterface
             discount_end_date,
             author.author_name as author_name,
             coalesce(discount_price, 0) as discount_price ,
+            book_price - discount_price as sub_price,
             round(avg(coalesce(review.rating_start,0)),2) as avg_rating,
             case
                 when 
@@ -92,14 +93,15 @@ class BookRepository implements BookRepositoryInterface
         function($query) use($rating){
             $query->havingRaw('round(avg(coalesce(review.rating_start,0)),2) >='.$rating);
         })
-        ->when($per_page!=null ,
+        /* ->when($per_page!=null ,
         function($query) use($per_page){
             return $query->paginate($per_page);
-        })
-        ->when($per_page==null ,
+        }) */
+        /* ->when($per_page==null ,
         function($query){
            return $query->paginate(5);
-        });
+        }) */
+        ->paginate($per_page);
         return $books;
     }
 
@@ -133,14 +135,29 @@ class BookRepository implements BookRepositoryInterface
     /* get book on sale */
     public function getOnSale()
     {
-        $books = $this->book->select(
-            'book.*',
-            'discount_start_date','discount_end_date',
-            'discount_price',
-            DB::raw('author.author_name as author_name'),
-            DB::raw('book_price - discount_price AS sub_price'),
-            DB::raw('ROUND(AVG(review.rating_start),1) AS avg_rating')
-        )
+        $books = $this->book
+        ->selectraw('book.*,
+            discount_start_date,
+            discount_end_date,
+            author.author_name as author_name,
+            coalesce(discount_price, 0) as discount_price ,
+            book_price - discount_price AS sub_price,
+            round(avg(coalesce(review.rating_start,0)),2) as avg_rating,
+            case
+                when 
+                    (discount_start_date <= now() 
+                        and discount_price !=0
+                        and (discount_end_date >= now() 
+                        or discount_end_date  IS null))
+                    then discount_price 
+                else 
+                    book_price 
+                end 
+                as 
+                    final_price,
+            count(review.book_id) as count_review
+            
+            ')
         ->leftJoin('author','author.id','=','book.author_id')
         ->leftjoin('discount','discount.book_id','=','book.id')
         ->leftJoin('review','book.id','=','review.book_id')

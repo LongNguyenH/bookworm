@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from "react";
 import axios from 'axios';
-import { Card, ListGroup } from 'react-bootstrap';
+import { Button, Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../api';
 import { objectBookCover } from './BookCover';
@@ -17,8 +17,24 @@ function Sale() {
     },[]);
     
         return (
-            <div class="justify-content-center">
-                ON SALE
+            <section class="justify-content-center">
+                <div className='d-flex justify-content-between'>
+                <p>ON SALE
+                </p>
+                <Link to={{
+                    pathname:"/shop",
+                    state:{
+                        sortby:"onsale",
+                        mode:"desc",
+                    }
+                }}
+                >
+                    <Button>
+                    View all
+                    </Button>
+                </Link>
+                
+                </div>
                 <div className=" row row-cols-4 justify-content-center row-cols-4 flex-row border p-2 m-2">
                     {books.map((book)=>{
                             Object.keys(book).forEach((key) => {
@@ -45,7 +61,17 @@ function Sale() {
                                         <Card.Text>{book.author_name}</Card.Text>
                                     </Card.Body>
                                     <ListGroup className="list-group-flush">
-                                        <ListGroup.Item className="card-price">${book.book_price}</ListGroup.Item>
+                                    {book.book_price===book.final_price &&
+                                    
+                                        <ListGroup.Item className="card-price bg-primary text-white d-flex">${book.book_price}</ListGroup.Item>
+                                    
+                                    }
+                                    {book.book_price!==book.final_price &&
+                                        <ListGroup.Item className="card-price bg-primary text-white d-flex">
+                                            <p className='strike-through'>${book.book_price}</p> <p className='fw-bold'>${book.final_price}</p>
+                                        </ListGroup.Item>
+                                    
+                                    }
                                     </ListGroup>
                                 </Card>         
                                 </Link>                                       
@@ -53,7 +79,7 @@ function Sale() {
                         
                     })}
                 </div>
-            </div>
+            </section>
         )
     
 }

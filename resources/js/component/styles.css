@@ -39,7 +39,6 @@ a{
 }
 .card-price{
     text-align: left;
-    background-color: aqua !important;
 }
 .filter_btn{
     background-color: transparent !important;
@@ -72,11 +71,16 @@ a{
 .pointer{
     cursor: pointer;
 }
-
+.card-img-top{
+    height: 20rem !important;
+}
 .quantity-column span {
     flex: 1;
     text-align: center;
     padding: 1rem;
+}
+.strike-through{
+    text-decoration: line-through;
 }
 #footer{
     border-top: 1px solid black;

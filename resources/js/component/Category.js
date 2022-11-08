@@ -6,6 +6,7 @@ import api from '../api';
 function Category({handleCategory}) {
     const [categories,setCategories]=useState([]); 
     const [category_filter,setCategory_filter]=useState();
+    const [category_name,setCategoryName]=useState();
   useEffect(()=>{
     api
     .get("api/category")
@@ -21,7 +22,7 @@ function Category({handleCategory}) {
                 return(
                     <Button variant="default" className="filter_btn container-fluid p-0" key={category.id} onClick={()=>{
                         setCategory_filter(category.id);
-                        handleCategory(category.id);
+                        handleCategory(category.id,category.category_name);
 
                     }}>
                     {category.category_name}
