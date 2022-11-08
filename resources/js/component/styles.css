@@ -27,8 +27,11 @@ a{
     cursor: pointer;
     padding: 0 !important;
     width: calc(25% - 0.5rem) !important;
+    height: 35rem;
 }
-
+.react-multi-carousel-list .card-container{
+    width: 100% !important;
+}
 .card-btn{
     width: 100%;
 }
@@ -74,6 +77,7 @@ a{
 .card-img-top{
     height: 20rem !important;
 }
+
 .quantity-column span {
     flex: 1;
     text-align: center;

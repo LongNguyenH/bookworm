@@ -5,14 +5,35 @@ import { Button, Card, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import api from '../api';
 import { objectBookCover } from './BookCover';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 function Sale() {
     const [books,setBooks]=useState([]);
+    const item_no= {
+            desktop:{
+                breakpoint: { max: 3000, min: 100 },
+                items: 4,
+            }
+            
+        };
   useEffect(()=>{
     api
     .get("api/books/sale")
     .then((response)=>response.data)
     .then((response)=>{
-        setBooks(response);
+        const books_response = response;
+            books_response.map((book) => (
+                Object.keys(book).forEach((key) => {
+                    if (key === 'book_cover_photo') {
+                        if (book[key] === null || book[key] === 'null') {
+                            book[key] = objectBookCover['default'];
+                        } else {
+                            book[key] = objectBookCover[book[key]];
+                        }
+                    }
+                })
+            ))
+        setBooks(books_response);
     });
     },[]);
     
@@ -35,17 +56,10 @@ function Sale() {
                 </Link>
                 
                 </div>
-                <div className=" row row-cols-4 justify-content-center row-cols-4 flex-row border p-2 m-2">
+                <div className="  border p-2 m-2">
+                    <Carousel responsive={item_no}>
                     {books.map((book)=>{
-                            Object.keys(book).forEach((key) => {
-                                if (key === 'book_cover_photo') {
-                                  if (book[key] === null || book[key] === 'null') {
-                                    book[key] = objectBookCover['default'];
-                                  } else {
-                                    book[key] =objectBookCover[book[key]];
-                                  }
-                                }
-                              })
+                            
                         return(
                             <Link className='card-container row m-0' 
                                 key={book.id} to={'/product'}
@@ -74,10 +88,11 @@ function Sale() {
                                     }
                                     </ListGroup>
                                 </Card>         
-                                </Link>                                       
+                            </Link>                                       
                         );
                         
                     })}
+                    </Carousel>
                 </div>
             </section>
         )
