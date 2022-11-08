@@ -12527,23 +12527,6 @@ function Book() {
     }
     fetchMyAPI();
   }, [author_filter, category_filter, currentPage, perPage]);
-  /* function handleChange(){
-      api
-      .get(`api/books`,{params:{
-          category_id:category_filter,
-          author_id:author_filter,
-          sortby:sortby,
-          mode:mode,
-          page:currentPage,
-          per_page:perPage
-      }})
-      .then((response)=>response.data)
-      .then((response)=>{
-          setBooks(response.data);
-          setCurrentPage(response.current_page);
-          setLastPage(response.last_page);
-      });
-  } */
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("section", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       className: "d-flex",
@@ -13318,7 +13301,6 @@ var Featured = /*#__PURE__*/function (_React$Component) {
     }
     _this = _super.call.apply(_super, [this].concat(args));
     _defineProperty(_assertThisInitialized(_this), "state", {
-      onSaleBooks: [],
       recommendedBooks: [],
       popularBooks: [],
       defaultBooks: [],
@@ -13365,7 +13347,7 @@ var Featured = /*#__PURE__*/function (_React$Component) {
           defaultBooks: recommendedBooks
         });
       });
-      _api__WEBPACK_IMPORTED_MODULE_3__["default"].get('http://bookworm.com/api/books/popular').then(function (result) {
+      _api__WEBPACK_IMPORTED_MODULE_3__["default"].get('api/books/popular').then(function (result) {
         // console.log(result.data);
         var popularBooks = result.data;
         popularBooks.map(function (book) {
@@ -13396,10 +13378,10 @@ var Featured = /*#__PURE__*/function (_React$Component) {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "text-center",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                className: "section-title font-20px mb-3",
+                className: "mb-3",
                 children: "Featured Books"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "mb-4",
+                className: "mb-4 d-flex gap-4 justify-content-center",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
                   color: this.state.recommended ? 'secondary' : 'link',
                   onClick: this.recommendedBookClick,
@@ -13411,7 +13393,6 @@ var Featured = /*#__PURE__*/function (_React$Component) {
                 })]
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              id: "mainRow",
               className: "row",
               children: this.state.defaultBooks.map(function (book) {
                 return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
@@ -13473,7 +13454,7 @@ function Footer() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "logo ",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-        src: "",
+        src: (__webpack_require__(/*! ../../assets/bookworm_icon.svg */ "./resources/assets/bookworm_icon.svg")["default"]),
         alt: ""
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {

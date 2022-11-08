@@ -10,7 +10,6 @@ import api from '../api';
 
 export default class Featured extends React.Component {
   state = {
-    onSaleBooks: [],
     recommendedBooks: [],
     popularBooks: [],
     defaultBooks: [],
@@ -36,7 +35,7 @@ export default class Featured extends React.Component {
       this.setState({ recommendedBooks, defaultBooks: recommendedBooks });
     });
     api
-    .get('http://bookworm.com/api/books/popular').then((result) => {
+    .get('api/books/popular').then((result) => {
       // console.log(result.data);
       const popularBooks = result.data;
       popularBooks.map((book) =>
@@ -67,11 +66,10 @@ export default class Featured extends React.Component {
     return (
       <section className="">
         <div className="container">
-          
           <div className="book-list">
             <div className="text-center">
-              <p className="section-title font-20px mb-3">Featured Books</p>
-              <div className="mb-4">
+              <p className="mb-3">Featured Books</p>
+              <div className="mb-4 d-flex gap-4 justify-content-center">
                 <Button
                   color={this.state.recommended ? 'secondary' : 'link'}
                   onClick={this.recommendedBookClick}>
@@ -85,9 +83,8 @@ export default class Featured extends React.Component {
                 </Button>
               </div>
             </div>
-            <div id="mainRow" className="row">
-              {this.state.defaultBooks.map((book) => {
-                
+            <div className="row">
+              {this.state.defaultBooks.map((book) => { 
                 return (
                   <Link className='card-container row m-0' 
                                 key={book.id} to={'/product'}

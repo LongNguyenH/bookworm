@@ -131,23 +131,7 @@ function Book() {
     }
     fetchMyAPI();
     },[author_filter,category_filter,currentPage,perPage]);
-    /* function handleChange(){
-        api
-        .get(`api/books`,{params:{
-            category_id:category_filter,
-            author_id:author_filter,
-            sortby:sortby,
-            mode:mode,
-            page:currentPage,
-            per_page:perPage
-        }})
-        .then((response)=>response.data)
-        .then((response)=>{
-            setBooks(response.data);
-            setCurrentPage(response.current_page);
-            setLastPage(response.last_page);
-        });
-    } */
+    
         return (
             
             <section>

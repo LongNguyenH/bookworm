@@ -13,8 +13,7 @@ function Sale() {
             desktop:{
                 breakpoint: { max: 3000, min: 100 },
                 items: 4,
-            }
-            
+            }          
         };
   useEffect(()=>{
     api
